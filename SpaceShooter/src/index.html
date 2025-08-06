@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter - Arcade Clássico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>SPACE SHOOTER</h1>
+            <div class="score-display">
+                <span>PONTOS: <span id="score">0</span></span>
+                <span>VIDAS: <span id="lives">3</span></span>
+            </div>
+        </div>
+        
+        <div class="game-area" id="gameArea">
+            <!-- Estrelas do fundo serão geradas dinamicamente -->
+            <div class="stars-container" id="starsContainer"></div>
+            
+            <!-- Nave do jogador -->
+            <div class="player" id="player"></div>
+            
+            <!-- Container para projéteis -->
+            <div class="bullets-container" id="bulletsContainer"></div>
+            
+            <!-- Container para inimigos -->
+            <div class="enemies-container" id="enemiesContainer"></div>
+            
+            <!-- Tela de game over -->
+            <div class="game-over" id="gameOver" style="display: none;">
+                <h2>GAME OVER</h2>
+                <p>Pontuação Final: <span id="finalScore">0</span></p>
+                <p>Tempo de Jogo: <span id="gameTime">0</span>s</p>
+                <p>Precisão: <span id="accuracy">0</span>%</p>
+                <button id="restartBtn">JOGAR NOVAMENTE</button>
+            </div>
+            
+            <!-- Tela de início -->
+            <div class="start-screen" id="startScreen">
+                <h2>SPACE SHOOTER</h2>
+                <p>Use as setas ou WASD para mover</p>
+                <p>Pressione ESPAÇO para atirar</p>
+                <button id="startBtn">INICIAR JOGO</button>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <p>Controles: ← → ↑ ↓ ou WASD para mover | ESPAÇO para atirar</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
