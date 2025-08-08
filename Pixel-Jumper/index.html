@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Jumper - Jogo de Plataforma</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>PIXEL JUMPER</h1>
+            <div class="score-display">
+                <span>PONTOS: <span id="score">0</span></span>
+                <span>VIDAS: <span id="lives">3</span></span>
+                <span>NÍVEL: <span id="level">1</span></span>
+            </div>
+        </div>
+        
+        <div class="game-area" id="gameArea">
+            <!-- Fundo com paralaxe -->
+            <div class="background-layer" id="backgroundLayer"></div>
+            
+            <!-- Jogador -->
+            <div class="player" id="player"></div>
+            
+            <!-- Container para plataformas -->
+            <div class="platforms-container" id="platformsContainer"></div>
+            
+            <!-- Container para coletáveis -->
+            <div class="collectibles-container" id="collectiblesContainer"></div>
+            
+            <!-- Container para inimigos -->
+            <div class="enemies-container" id="enemiesContainer"></div>
+            
+            <!-- Container para partículas -->
+            <div class="particles-container" id="particlesContainer"></div>
+            
+            <!-- Telas de overlay -->
+            <div class="start-screen" id="startScreen">
+                <h2>PIXEL JUMPER</h2>
+                <p>Use as setas ou WASD para mover</p>
+                <p>Pressione ESPAÇO para pular</p>
+                <p>Colete moedas e evite inimigos!</p>
+                <button id="startBtn">INICIAR JOGO</button>
+            </div>
+            
+            <div class="game-over" id="gameOver" style="display: none;">
+                <h2>GAME OVER</h2>
+                <p>Pontuação: <span id="finalScore">0</span></p>
+                <p>Tempo: <span id="gameTime">0</span>s</p>
+                <p>Moedas coletadas: <span id="coinsCollected">0</span></p>
+                <button id="restartBtn">JOGAR NOVAMENTE</button>
+            </div>
+            
+            <div class="level-complete" id="levelComplete" style="display: none;">
+                <h2>NÍVEL COMPLETO!</h2>
+                <p>Pontuação: <span id="levelScore">0</span></p>
+                <p>Bônus de tempo: <span id="timeBonus">0</span></p>
+                <button id="nextLevelBtn">PRÓXIMO NÍVEL</button>
+            </div>
+            
+            <div class="pause-screen" id="pauseScreen" style="display: none;">
+                <h2>PAUSADO</h2>
+                <p>Pressione P para continuar</p>
+            </div>
+        </div>
+        
+        <div class="game-controls">
+            <div class="controls-info">
+                <span><strong>Movimento:</strong> ← → ou A D</span>
+                <span><strong>Pular:</strong> ↑ ou W ou ESPAÇO</span>
+                <span><strong>Pausar:</strong> P</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

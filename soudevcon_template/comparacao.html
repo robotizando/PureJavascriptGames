@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+      
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        max-height: 720px;
+        background-color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        height: 80px;
+        background-color: #424242;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      
+      .header-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .content-wrapper {
+        display: flex;
+        height: 600px;
+        padding: 20px 40px;
+      }
+      
+      .sidebar {
+        width: 10px;
+        background-color: #FF3B30;
+        margin-right: 30px;
+      }
+      
+      .content-inner {
+        position: relative;
+        z-index: 10;
+        flex: 1;
+      }
+      
+      .section-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #424242;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      
+      .comparison-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      
+      .comparison-column {
+        flex: 1;
+        padding: 0 15px;
+      }
+      
+      .comparison-header {
+        text-align: center;
+        padding: 15px;
+        border-radius: 8px 8px 0 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .header-left {
+        background-color: #FF3B30;
+      }
+      
+      .header-right {
+        background-color: #00B9C8;
+      }
+      
+      .comparison-content {
+        background-color: #F5F5F5;
+        padding: 20px;
+        border-radius: 0 0 8px 8px;
+        height: 350px;
+      }
+      
+      .comparison-item {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: flex-start;
+      }
+      
+      .comparison-icon {
+        margin-right: 10px;
+        color: #424242;
+        font-size: 18px;
+        margin-top: 2px;
+      }
+      
+      .comparison-text {
+        font-size: 18px;
+        color: #424242;
+        line-height: 1.4;
+      }
+      
+      .vs-divider {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+      }
+      
+      .vs-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #00A67E;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FFFFFF;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      
+      .vs-line {
+        width: 2px;
+        height: 350px;
+        background-color: #00A67E;
+        margin: 10px 0;
+      }
+      
+      .footer {
+        height: 40px;
+        background: linear-gradient(90deg, #FF3B30 0%, #00B9C8 50%, #00A67E 100%);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 20px;
+      }
+      
+      .footer-logo {
+        height: 30px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="header">
+        <h1 class="header-title">Comparação</h1>
+      </div>
+      
+      <div class="content-wrapper">
+        <div class="sidebar"></div>
+        
+        <div class="content-inner">
+          <h2 class="section-title">[Título da Comparação]</h2>
+          
+          <div class="comparison-container">
+            <div class="comparison-column">
+              <div class="comparison-header header-left">[Opção A]</div>
+              <div class="comparison-content">
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Vantagem 1 da Opção A com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Vantagem 2 da Opção A com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Vantagem 3 da Opção A com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-times-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Desvantagem 1 da Opção A com breve descrição.
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vs-divider">
+              <div class="vs-circle">VS</div>
+              <div class="vs-line"></div>
+            </div>
+            
+            <div class="comparison-column">
+              <div class="comparison-header header-right">[Opção B]</div>
+              <div class="comparison-content">
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Vantagem 1 da Opção B com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-check-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Vantagem 2 da Opção B com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-times-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Desvantagem 1 da Opção B com breve descrição.
+                  </div>
+                </div>
+                
+                <div class="comparison-item">
+                  <div class="comparison-icon">
+                    <i class="fas fa-times-circle"></i>
+                  </div>
+                  <div class="comparison-text">
+                    Desvantagem 2 da Opção B com breve descrição.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <img src="/home/ubuntu/soudevcon_template/soudevcon_logo_refined.png" alt="SouDevCon Logo" class="footer-logo">
+      </div>
+    </div>
+  </body>
+</html>
+

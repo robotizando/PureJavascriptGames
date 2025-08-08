@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Quest - Jogo da Memória</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Cabeçalho do jogo -->
+        <header class="game-header">
+            <h1 class="game-title">MEMORY QUEST</h1>
+            <div class="game-stats">
+                <div class="stat-item">
+                    <span class="stat-label">TEMPO</span>
+                    <span class="stat-value" id="timer">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">TENTATIVAS</span>
+                    <span class="stat-value" id="attempts">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">PARES</span>
+                    <span class="stat-value" id="pairs">0/8</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Área principal do jogo -->
+        <main class="game-main">
+            <!-- Tabuleiro do jogo -->
+            <div class="game-board" id="gameBoard">
+                <!-- As cartas serão geradas dinamicamente pelo JavaScript -->
+            </div>
+
+            <!-- Painel de controle -->
+            <div class="control-panel">
+                <button class="btn btn-primary" id="startBtn">INICIAR JOGO</button>
+                <button class="btn btn-secondary" id="restartBtn" style="display: none;">REINICIAR</button>
+                <div class="difficulty-selector">
+                    <label for="difficulty">Dificuldade:</label>
+                    <select id="difficulty">
+                        <option value="easy">Fácil (4x4)</option>
+                        <option value="medium" selected>Médio (4x4)</option>
+                        <option value="hard">Difícil (6x6)</option>
+                    </select>
+                </div>
+            </div>
+        </main>
+
+        <!-- Tela de início -->
+        <div class="overlay start-screen" id="startScreen">
+            <div class="overlay-content">
+                <h2>MEMORY QUEST</h2>
+                <p>Encontre todos os pares de cartas no menor tempo possível!</p>
+                <div class="instructions">
+                    <h3>Como Jogar:</h3>
+                    <ul>
+                        <li>Clique em duas cartas para virá-las</li>
+                        <li>Se formarem um par, elas permanecerão viradas</li>
+                        <li>Se não, elas voltarão para baixo</li>
+                        <li>Encontre todos os pares para vencer!</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="startGame()">COMEÇAR</button>
+            </div>
+        </div>
+
+        <!-- Tela de vitória -->
+        <div class="overlay victory-screen" id="victoryScreen">
+            <div class="overlay-content">
+                <h2>🎉 PARABÉNS! 🎉</h2>
+                <p>Você completou o jogo!</p>
+                <div class="final-stats">
+                    <div class="final-stat">
+                        <span class="final-label">Tempo Final:</span>
+                        <span class="final-value" id="finalTime">00:00</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="final-label">Total de Tentativas:</span>
+                        <span class="final-value" id="finalAttempts">0</span>
+                    </div>
+                    <div class="final-stat">
+                        <span class="final-label">Precisão:</span>
+                        <span class="final-value" id="accuracy">100%</span>
+                    </div>
+                </div>
+                <div class="victory-buttons">
+                    <button class="btn btn-primary" onclick="restartGame()">JOGAR NOVAMENTE</button>
+                    <button class="btn btn-secondary" onclick="showStartScreen()">MENU INICIAL</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tela de pausa -->
+        <div class="overlay pause-screen" id="pauseScreen">
+            <div class="overlay-content">
+                <h2>JOGO PAUSADO</h2>
+                <p>Pressione ESC novamente para continuar</p>
+                <button class="btn btn-primary" onclick="resumeGame()">CONTINUAR</button>
+                <button class="btn btn-secondary" onclick="showStartScreen()">MENU INICIAL</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Efeitos de partículas -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

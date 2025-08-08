@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+      
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background-color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        height: 80px;
+        background-color: #424242;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      
+      .header-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .content-wrapper {
+        display: flex;
+        min-height: 560px;
+        padding: 40px;
+      }
+      
+      .sidebar {
+        width: 10px;
+        background-color: #FF3B30;
+        margin-right: 30px;
+      }
+      
+      .content-inner {
+        position: relative;
+        z-index: 10;
+        flex: 1;
+      }
+      
+      .topic-title {
+        font-size: 28px;
+        font-weight: 700;
+        color: #424242;
+        margin-bottom: 30px;
+      }
+      
+      .topic-list {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .topic-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 25px;
+      }
+      
+      .topic-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: #FF3B30;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        flex-shrink: 0;
+      }
+      
+      .topic-icon i {
+        color: #FFFFFF;
+        font-size: 14px;
+      }
+      
+      .topic-content {
+        flex: 1;
+      }
+      
+      .topic-heading {
+        font-size: 22px;
+        font-weight: 500;
+        color: #424242;
+        margin-bottom: 5px;
+      }
+      
+      .topic-description {
+        font-size: 18px;
+        color: #78909C;
+        line-height: 1.5;
+      }
+      
+      .footer {
+        height: 40px;
+        background: linear-gradient(90deg, #FF3B30 0%, #00B9C8 50%, #00A67E 100%);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 20px;
+      }
+      
+      .footer-logo {
+        height: 30px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <div class="header">
+        <h1 class="header-title">Conteúdo com Tópicos</h1>
+      </div>
+      
+      <div class="content-wrapper">
+        <div class="sidebar"></div>
+        
+        <div class="content-inner">
+          <h2 class="topic-title">[Título da Seção]</h2>
+          
+          <ul class="topic-list">
+            <li class="topic-item">
+              <div class="topic-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="topic-content">
+                <h3 class="topic-heading">[Tópico Principal 1]</h3>
+                <p class="topic-description">Descrição detalhada do primeiro tópico principal, explicando conceitos importantes e fornecendo contexto.</p>
+              </div>
+            </li>
+            
+            <li class="topic-item">
+              <div class="topic-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="topic-content">
+                <h3 class="topic-heading">[Tópico Principal 2]</h3>
+                <p class="topic-description">Descrição detalhada do segundo tópico principal, explicando conceitos importantes e fornecendo contexto.</p>
+              </div>
+            </li>
+            
+            <li class="topic-item">
+              <div class="topic-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="topic-content">
+                <h3 class="topic-heading">[Tópico Principal 3]</h3>
+                <p class="topic-description">Descrição detalhada do terceiro tópico principal, explicando conceitos importantes e fornecendo contexto.</p>
+              </div>
+            </li>
+            
+            <li class="topic-item">
+              <div class="topic-icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <div class="topic-content">
+                <h3 class="topic-heading">[Tópico Principal 4]</h3>
+                <p class="topic-description">Descrição detalhada do quarto tópico principal, explicando conceitos importantes e fornecendo contexto.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <img src="/home/ubuntu/soudevcon_template/soudevcon_logo_refined.png" alt="SouDevCon Logo" class="footer-logo">
+      </div>
+    </div>
+  </body>
+</html>
+

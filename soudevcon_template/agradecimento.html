@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+      
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .geometric-shape {
+        position: absolute;
+        opacity: 0.1;
+      }
+      
+      .shape-1 {
+        width: 300px;
+        height: 300px;
+        background-color: #FF3B30;
+        transform: rotate(45deg);
+        top: -100px;
+        left: -100px;
+      }
+      
+      .shape-2 {
+        width: 200px;
+        height: 200px;
+        background-color: #00B9C8;
+        transform: rotate(45deg);
+        bottom: -50px;
+        right: 100px;
+      }
+      
+      .shape-3 {
+        width: 150px;
+        height: 150px;
+        background-color: #00A67E;
+        transform: rotate(45deg);
+        bottom: 100px;
+        left: 50px;
+      }
+      
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 720px;
+        padding: 40px;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .thank-you {
+        font-size: 72px;
+        font-weight: 700;
+        color: #424242;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .logo-container {
+        margin-bottom: 50px;
+      }
+      
+      .logo {
+        max-width: 300px;
+        height: auto;
+      }
+      
+      .contact-info {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .presenter-name {
+        font-size: 28px;
+        font-weight: 700;
+        color: #424242;
+        margin-bottom: 10px;
+      }
+      
+      .presenter-title {
+        font-size: 22px;
+        font-weight: 400;
+        color: #78909C;
+        margin-bottom: 20px;
+      }
+      
+      .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+      
+      .social-link {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #FFFFFF;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+      }
+      
+      .social-link:hover {
+        transform: scale(1.1);
+      }
+      
+      .twitter {
+        background-color: #00B9C8;
+      }
+      
+      .linkedin {
+        background-color: #0077B5;
+      }
+      
+      .github {
+        background-color: #424242;
+      }
+      
+      .email {
+        background-color: #FF3B30;
+      }
+      
+      .accent-bar {
+        height: 8px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, #FF3B30 0%, #00B9C8 50%, #00A67E 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Formas geométricas decorativas -->
+      <div class="geometric-shape shape-1"></div>
+      <div class="geometric-shape shape-2"></div>
+      <div class="geometric-shape shape-3"></div>
+      
+      <div class="content-wrapper">
+        <h1 class="thank-you">Obrigado!</h1>
+        
+        <div class="logo-container">
+          <img src="/home/ubuntu/soudevcon_template/soudevcon_logo_refined.png" alt="SouDevCon Logo" class="logo">
+        </div>
+        
+        <div class="contact-info">
+          <h2 class="presenter-name">[Nome do Palestrante]</h2>
+          <p class="presenter-title">[Cargo / Empresa]</p>
+          
+          <div class="social-links">
+            <a href="#" class="social-link twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="social-link linkedin">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="social-link github">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="social-link email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="accent-bar"></div>
+    </div>
+  </body>
+</html>
+

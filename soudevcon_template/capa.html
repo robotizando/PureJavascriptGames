@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+      
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background: linear-gradient(135deg, #F5F5F5 0%, #E0E0E0 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .geometric-shape {
+        position: absolute;
+        opacity: 0.1;
+      }
+      
+      .shape-1 {
+        width: 300px;
+        height: 300px;
+        background-color: #FF3B30;
+        transform: rotate(45deg);
+        top: -100px;
+        left: -100px;
+      }
+      
+      .shape-2 {
+        width: 200px;
+        height: 200px;
+        background-color: #00B9C8;
+        transform: rotate(45deg);
+        bottom: -50px;
+        right: 100px;
+      }
+      
+      .shape-3 {
+        width: 150px;
+        height: 150px;
+        background-color: #00A67E;
+        transform: rotate(45deg);
+        bottom: 100px;
+        left: 50px;
+      }
+      
+      .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 720px;
+        padding: 40px;
+        position: relative;
+        z-index: 10;
+      }
+      
+      .logo-container {
+        margin-bottom: 60px;
+      }
+      
+      .logo {
+        max-width: 400px;
+        height: auto;
+      }
+      
+      .title {
+        font-size: 72px;
+        font-weight: 700;
+        color: #424242;
+        text-align: center;
+        margin-bottom: 30px;
+        line-height: 1.2;
+      }
+      
+      .subtitle {
+        font-size: 36px;
+        font-weight: 400;
+        color: #78909C;
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      
+      .presenter {
+        font-size: 24px;
+        font-weight: 500;
+        color: #424242;
+        text-align: center;
+      }
+      
+      .accent-bar {
+        height: 8px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(90deg, #FF3B30 0%, #00B9C8 50%, #00A67E 100%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <!-- Formas geométricas decorativas -->
+      <div class="geometric-shape shape-1"></div>
+      <div class="geometric-shape shape-2"></div>
+      <div class="geometric-shape shape-3"></div>
+      
+      <div class="content-wrapper">
+        <div class="logo-container">
+          <img src="/home/ubuntu/soudevcon_template/soudevcon_logo_refined.png" alt="SouDevCon Logo" class="logo">
+        </div>
+        
+        <h1 class="title">[TÍTULO DA APRESENTAÇÃO]</h1>
+        <h2 class="subtitle">[Subtítulo ou descrição breve]</h2>
+        <p class="presenter">[Nome do Palestrante]<br>[Cargo / Empresa]</p>
+      </div>
+      
+      <div class="accent-bar"></div>
+    </div>
+  </body>
+</html>
+

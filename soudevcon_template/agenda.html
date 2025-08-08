@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+      
+      body {
+        font-family: 'Roboto', sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .slide-container {
+        width: 1280px;
+        min-height: 720px;
+        background-color: #FFFFFF;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .header {
+        height: 80px;
+        background-color: #424242;
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+      }
+      
+      .header-title {
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .content-wrapper {
+        display: flex;
+        min-height: 560px;
+        padding: 40px;
+      }
+      
+      .content-inner {
+        position: relative;
+        z-index: 10;
+        width: 100%;
+      }
+      
+      .agenda-item {
+        display: flex;
+        margin-bottom: 30px;
+        align-items: center;
+      }
+      
+      .agenda-number {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        color: #FFFFFF;
+      }
+      
+      .number-1 {
+        background-color: #FF3B30;
+      }
+      
+      .number-2 {
+        background-color: #00B9C8;
+      }
+      
+      .number-3 {
+        background-color: #00A67E;
+      }
+      
+      .number-4 {
+        background-color: #FF3B30;
+      }
+      
+      .number-5 {
+        background-color: #00B9C8;
+      }
+      
+      .agenda-text {
+        font-size: 24px;
+        font-weight: 500;
+        color: #424242;
+      }
+      
+      .agenda-description {
+        font-size: 18px;
+        color: #78909C;
+        margin-top: 5px;
+      }
+      
+      .background-pattern {
+        width: 100%;
+        height: 100%;
+        opacity: 0.1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+      }
+      
+      .footer {
+        height: 40px;
+        background: linear-gradient(90deg, #FF3B30 0%, #00B9C8 50%, #00A67E 100%);
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding-right: 20px;
+      }
+      
+      .footer-logo {
+        height: 30px;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slide-container">
+      <img src="/home/ubuntu/soudevcon_template/background_pattern.png" alt="Padrão de fundo" class="background-pattern">
+      
+      <div class="header">
+        <h1 class="header-title">Agenda</h1>
+      </div>
+      
+      <div class="content-wrapper">
+        <div class="content-inner">
+          <div class="agenda-item">
+            <div class="agenda-number number-1">1</div>
+            <div>
+              <div class="agenda-text">[Tópico 1]</div>
+              <div class="agenda-description">Breve descrição do primeiro tópico a ser abordado</div>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-number number-2">2</div>
+            <div>
+              <div class="agenda-text">[Tópico 2]</div>
+              <div class="agenda-description">Breve descrição do segundo tópico a ser abordado</div>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-number number-3">3</div>
+            <div>
+              <div class="agenda-text">[Tópico 3]</div>
+              <div class="agenda-description">Breve descrição do terceiro tópico a ser abordado</div>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-number number-4">4</div>
+            <div>
+              <div class="agenda-text">[Tópico 4]</div>
+              <div class="agenda-description">Breve descrição do quarto tópico a ser abordado</div>
+            </div>
+          </div>
+          
+          <div class="agenda-item">
+            <div class="agenda-number number-5">5</div>
+            <div>
+              <div class="agenda-text">[Tópico 5]</div>
+              <div class="agenda-description">Breve descrição do quinto tópico a ser abordado</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <img src="/home/ubuntu/soudevcon_template/soudevcon_logo_refined.png" alt="SouDevCon Logo" class="footer-logo">
+      </div>
+    </div>
+  </body>
+</html>
+

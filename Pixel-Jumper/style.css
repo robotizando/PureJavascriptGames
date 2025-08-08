@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Courier+Prime:wght@400;700&display=swap');
+
+/* Reset e configurações básicas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier Prime', monospace;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #00ff00;
+    overflow: hidden;
+    user-select: none;
+}
+
+/* Container principal */
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Cabeçalho do jogo */
+.game-header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #00ff00;
+    box-shadow: 0 2px 10px rgba(0, 255, 0, 0.3);
+    z-index: 100;
+}
+
+.game-header h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 24px;
+    color: #00ff00;
+    text-shadow: 0 0 10px #00ff00;
+}
+
+.score-display {
+    display: flex;
+    gap: 30px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.score-display span {
+    color: #ffffff;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+/* Área do jogo */
+.game-area {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #87CEEB 0%, #98FB98 100%);
+}
+
+/* Fundo com paralaxe */
+.background-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.8"/><circle cx="80" cy="30" r="1.5" fill="%23ffffff" opacity="0.6"/><circle cx="40" cy="60" r="1" fill="%23ffffff" opacity="0.4"/><circle cx="70" cy="80" r="2.5" fill="%23ffffff" opacity="0.7"/></svg>') repeat,
+        linear-gradient(to bottom, #4169E1 0%, #87CEEB 100%);
+    /*z-index: 1;*/
+}
+
+/* Jogador */
+.player {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(45deg, #ff6b6b 0%, #ff8e53 100%);
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(255, 107, 107, 0.6);
+    transition: transform 0.1s ease;
+}
+
+.player::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    box-shadow: 10px 0 0 #ffffff;
+}
+
+.player::after {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    width: 8px;
+    height: 4px;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+.player.jumping {
+    transform: rotate(-10deg);
+}
+
+.player.moving-left {
+    transform: scaleX(-1);
+}
+
+/* Plataformas */
+.platform {
+    position: absolute;
+    background: linear-gradient(to bottom, #8B4513 0%, #654321 100%);
+    border: 2px solid #A0522D;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s ease;
+}
+
+.platform:hover {
+    transform: translateY(-1px);
+}
+
+.platform::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #90EE90 0%, #32CD32 50%, #90EE90 100%);
+    border-radius: 2px;
+}
+
+/* Coletáveis (moedas) */
+.coin {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, #FFD700 0%, #FFA500 100%);
+    border: 2px solid #FFFF00;
+    border-radius: 50%;
+    z-index: 5;
+    animation: coinSpin 2s linear infinite, coinFloat 3s ease-in-out infinite;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.coin::before {
+    content: '$';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #8B4513;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+@keyframes coinSpin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@keyframes coinFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Inimigos */
+.enemy {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(45deg, #8B0000 0%, #FF0000 100%);
+    border: 2px solid #FF4500;
+    border-radius: 4px;
+    z-index: 5;
+    animation: enemyMove 3s linear infinite alternate;
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+}
+
+.enemy::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 4px;
+    height: 4px;
+    background: #FFFF00;
+    border-radius: 50%;
+    box-shadow: 8px 0 0 #FFFF00;
+}
+
+.enemy::after {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 8px;
+    width: 8px;
+    height: 2px;
+    background: #FFFF00;
+}
+
+@keyframes enemyMove {
+    0% { transform: translateX(0px); }
+    100% { transform: translateX(100px); }
+}
+
+/* Partículas */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #FFD700;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.particle.explosion {
+    animation: particleExplosion 0.5s ease-out forwards;
+}
+
+@keyframes particleExplosion {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) translateY(-20px);
+    }
+}
+
+/* Telas de overlay */
+.start-screen, .game-over, .level-complete, .pause-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    color: #00ff00;
+    text-align: center;
+}
+
+.start-screen h2, .game-over h2, .level-complete h2, .pause-screen h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 32px;
+    margin-bottom: 30px;
+    text-shadow: 0 0 15px #00ff00;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 0 0 15px #00ff00; }
+    100% { text-shadow: 0 0 25px #00ff00, 0 0 35px #00ff00; }
+}
+
+.start-screen p, .game-over p, .level-complete p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #ffffff;
+}
+
+.start-screen button, .game-over button, .level-complete button {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 15px 30px;
+    margin-top: 30px;
+    background: linear-gradient(45deg, #00ff00 0%, #00aa00 100%);
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.4);
+}
+
+.start-screen button:hover, .game-over button:hover, .level-complete button:hover {
+    background: linear-gradient(45deg, #00aa00 0%, #008800 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 255, 0, 0.6);
+}
+
+/* Controles */
+.game-controls {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 20px;
+    border-top: 2px solid #00ff00;
+    z-index: 100;
+}
+
+.controls-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.controls-info span {
+    text-shadow: 0 0 3px #00ff00;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .game-header h1 {
+        font-size: 18px;
+    }
+    
+    .score-display {
+        gap: 15px;
+        font-size: 14px;
+    }
+    
+    .controls-info {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .start-screen h2, .game-over h2, .level-complete h2 {
+        font-size: 24px;
+    }
+    
+    .start-screen button, .game-over button, .level-complete button {
+        font-size: 14px;
+        padding: 12px 24px;
+    }
+}
+
+/* Efeitos especiais */
+.screen-shake {
+    animation: screenShake 0.5s ease-in-out;
+}
+
+@keyframes screenShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+    20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.bounce {
+    animation: bounce 0.3s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
